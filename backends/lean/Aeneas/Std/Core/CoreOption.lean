@@ -5,6 +5,9 @@ public import Aeneas.Std.Core.Result
 public import Aeneas.Std.String
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 namespace Aeneas.Std
 
 open Result

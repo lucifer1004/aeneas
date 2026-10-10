@@ -15,6 +15,9 @@ public import Aeneas.Tactic.Solver.Arith.Lemmas
 public import Aeneas.Data.BitVec
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 namespace Aeneas
 
 namespace Std

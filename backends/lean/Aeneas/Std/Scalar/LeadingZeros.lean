@@ -5,6 +5,9 @@ public import Mathlib.Data.Nat.Log
 import all Mathlib.Data.Nat.Log
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 namespace Aeneas.Std
 
 open ScalarElab

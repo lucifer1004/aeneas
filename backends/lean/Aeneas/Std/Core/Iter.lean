@@ -10,6 +10,9 @@ public import Aeneas.Std.Scalar.CheckedOps
 public import Aeneas.Std.Core.Core
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 @[expose] section
 
 namespace Aeneas.Std

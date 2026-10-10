@@ -6,6 +6,9 @@ public import Aeneas.Tactic.Step.Init
 public import Aeneas.Tactic.Elab.TraitDefault.Init
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 namespace Aeneas.Std
 
 open Result

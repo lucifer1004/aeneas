@@ -8,6 +8,9 @@ meta import Aeneas.Std.Slice
 meta import Aeneas.Std.Array.Array
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 @[expose] section
 
 namespace Aeneas.Std

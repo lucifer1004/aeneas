@@ -5,6 +5,8 @@ import Aeneas.Tactic.Step.Step
 import Aeneas.Tactic.Solver.ScalarTac
 import Aeneas.Std
 
+set_option backward.isDefEq.respectTransparency false
+
 /-! # Tests for `dspec_induction` -/
 
 namespace Aeneas

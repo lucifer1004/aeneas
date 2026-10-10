@@ -5,6 +5,9 @@ public import Aeneas.Std.Core.Ops
 public import Aeneas.Tactic.Step.Init
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 namespace Aeneas.Std
 
 open Result

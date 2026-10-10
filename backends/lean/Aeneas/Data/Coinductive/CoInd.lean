@@ -7,6 +7,9 @@ namespace Aeneas.Data.Coinductive
 
 @[expose] public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 /-!
 # Coinductive Types via Polynomial Functors
 

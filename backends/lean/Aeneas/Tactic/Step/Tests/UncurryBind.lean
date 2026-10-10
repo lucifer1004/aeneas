@@ -3,6 +3,8 @@ import Aeneas.Std.Slice
 import Aeneas.Tactic.Step
 import Aeneas.Do
 
+set_option backward.isDefEq.respectTransparency false
+
 open Aeneas Aeneas.Std Result
 
 namespace Aeneas.Tactic.Step.Tests.UncurryBind

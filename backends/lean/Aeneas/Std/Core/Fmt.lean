@@ -5,6 +5,9 @@ public import Aeneas.Std.Array.Array
 public import Aeneas.Std.StringDef
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 namespace Aeneas.Std
 
 @[reducible, expose, rust_type "core::fmt::Error"]

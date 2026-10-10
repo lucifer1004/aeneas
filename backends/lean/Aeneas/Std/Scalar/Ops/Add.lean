@@ -6,6 +6,9 @@ public import Aeneas.Tactic.Solver.ScalarTac
 public import Mathlib.Data.BitVec
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 namespace Aeneas.Std
 
 open Result Error Arith ScalarElab WP

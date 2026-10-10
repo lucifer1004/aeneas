@@ -1,6 +1,8 @@
 module
 import Aeneas.Tactic.Step
 
+set_option backward.isDefEq.respectTransparency false
+
 open Aeneas Std Result Lean Elab Tactic
 
 namespace Aeneas.Tactic.Step.Tests.ParserErrors

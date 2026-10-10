@@ -12,6 +12,9 @@ public import Aeneas.Data.Coinductive.ITreeWP
 import all Init.Internal.Order.Basic
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 namespace Aeneas.Std.WP
 
 open Std Result

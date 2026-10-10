@@ -2,6 +2,8 @@ module
 import Aeneas.Std.Core.CoreOption
 import Aeneas.Tactic.Step
 
+set_option backward.isDefEq.respectTransparency false
+
 open Aeneas Aeneas.Std Result
 
 namespace higher_order_option

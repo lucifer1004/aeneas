@@ -9,6 +9,9 @@ public import Aeneas.Std.Core.Cmp
 import all Init.Data.List.Control
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 /-! Array definitions which mention slices -/
 
 namespace Aeneas.Std

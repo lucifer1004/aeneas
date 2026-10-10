@@ -2,6 +2,8 @@ module
 import Aeneas.Std.Slice
 import Aeneas.Tactic.Step
 
+set_option backward.isDefEq.respectTransparency false
+
 open Aeneas Aeneas.Std Result ControlFlow Error
 
 namespace higher_order

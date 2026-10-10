@@ -6,6 +6,9 @@ public import Aeneas.Std.Scalar
 public import Aeneas.Std.SliceIter
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 namespace Aeneas.Std
 
 open Result core.ops.range WP ScalarElab

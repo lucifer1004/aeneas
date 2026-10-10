@@ -2,6 +2,8 @@ module
 public import Aeneas.Data.Array
 public section
 
+
+
 namespace Vector
 
 attribute [scalar_tac self.toArray] Vector.size_toArray
@@ -16,13 +18,7 @@ def setSlice! {α} {n} (a : Vector α n) (i : ℕ) (s : List α) : Vector α n :
 
 theorem getElem!_eq_toArray_getElem! {α} {n} [Inhabited α] (s : Vector α n) (i : ℕ) :
   s[i]! = s.toArray[i]! := by
-  cases s; simp
-  unfold instGetElem?OfGetElemOfDecidable decidableGetElem?
-  simp only [getElem_mk, ← Array.getElem_toList]
-  by_cases h : i < n <;> try grind
-  simp_ifs
-  simp_lists
-  rfl
+  simp [getElem!_def, Vector.getElem?_toArray]
 
 @[simp, simp_lists_safe]
 theorem getElem!_default [Inhabited α] (ls : Vector α n) (i : ℕ)
@@ -44,20 +40,20 @@ theorem getElem!_setSlice!_prefix {α} {n} [Inhabited α]
   (s : Vector α n) (s' : List α) (i j : ℕ) (h : j < i) :
   (s.setSlice! i s')[j]! = s[j]! := by
   simp only [getElem!_eq_toArray_getElem!, setSlice!]
-  simp_lists
+  simp_lists [Array.getElem!_setSlice!_prefix, Array.getElem!_setSlice!_suffix, Array.getElem!_setSlice!_middle, Array.getElem_setSlice!_prefix, Array.getElem_setSlice!_suffix, Array.getElem_setSlice!_middle]
 
 @[simp_lists_safe]
 theorem getElem!_setSlice!_middle {α} {n} [Inhabited α]
   (s : Vector α n) (s' : List α) (i j : ℕ) (h : i ≤ j ∧ j - i < s'.length ∧ j < s.size) :
   (s.setSlice! i s')[j]! = s'[j - i]! := by
   simp only [setSlice!, getElem!_eq_toArray_getElem!]
-  simp_lists
+  simp_lists [Array.getElem!_setSlice!_prefix, Array.getElem!_setSlice!_suffix, Array.getElem!_setSlice!_middle, Array.getElem_setSlice!_prefix, Array.getElem_setSlice!_suffix, Array.getElem_setSlice!_middle]
 
 theorem getElem!_setSlice!_suffix {α} {n} [Inhabited α]
   (s : Vector α n) (s' : List α) (i j : ℕ) (h : i + s'.length ≤ j) :
   (s.setSlice! i s')[j]! = s[j]! := by
   simp only [setSlice!, getElem!_eq_toArray_getElem!]
-  simp_lists
+  simp_lists [Array.getElem!_setSlice!_prefix, Array.getElem!_setSlice!_suffix, Array.getElem!_setSlice!_middle, Array.getElem_setSlice!_prefix, Array.getElem_setSlice!_suffix, Array.getElem_setSlice!_middle]
 
 @[simp_lists_safe]
 theorem getElem!_setSlice!_same {α} {n} [Inhabited α] (s : Vector α n) (s' : List α) (i j : ℕ)
@@ -69,20 +65,20 @@ theorem getElem_setSlice!_prefix {α} {n} [Inhabited α]
   (s : Vector α n) (s' : List α) (i j : ℕ) (h : j < i ∧ j < s.size) :
   (s.setSlice! i s')[j] = s[j] := by
   simp only [setSlice!, getElem_eq_toArray_getElem]
-  simp_lists
+  simp_lists [Array.getElem!_setSlice!_prefix, Array.getElem!_setSlice!_suffix, Array.getElem!_setSlice!_middle, Array.getElem_setSlice!_prefix, Array.getElem_setSlice!_suffix, Array.getElem_setSlice!_middle]
 
 @[simp_lists_safe]
 theorem getElem_setSlice!_middle {α} {n} [Inhabited α]
   (s : Vector α n) (s' : List α) (i j : ℕ) (h : i ≤ j ∧ j - i < s'.length ∧ j < n) :
   (s.setSlice! i s')[j] = s'[j - i] := by
   simp only [setSlice!, getElem_eq_toArray_getElem]
-  simp_lists
+  simp_lists [Array.getElem!_setSlice!_prefix, Array.getElem!_setSlice!_suffix, Array.getElem!_setSlice!_middle, Array.getElem_setSlice!_prefix, Array.getElem_setSlice!_suffix, Array.getElem_setSlice!_middle]
 
 theorem getElem_setSlice!_suffix {α} {n} [Inhabited α]
   (s : Vector α n) (s' : List α) (i j : ℕ) (h : i + s'.length ≤ j ∧ j < n) :
   (s.setSlice! i s')[j] = s[j] := by
   simp only [setSlice!, getElem_eq_toArray_getElem]
-  simp_lists
+  simp_lists [Array.getElem!_setSlice!_prefix, Array.getElem!_setSlice!_suffix, Array.getElem!_setSlice!_middle, Array.getElem_setSlice!_prefix, Array.getElem_setSlice!_suffix, Array.getElem_setSlice!_middle]
 
 @[simp_lists_safe]
 theorem getElem_setSlice!_same {α} {n} [Inhabited α] (s : Vector α n) (s' : List α) (i j : ℕ)
@@ -110,16 +106,7 @@ theorem getElem!_set! {α : Type u}
     ← Array.getElem!_toList, Array.toList_setIfInBounds]
   simp_lists
 
-@[simp, simp_lists_safe]
-theorem getElem_set! {α : Type u}
-  [Inhabited α] {n i j : ℕ} {x : α} {xs : Vector α n}
-  (hi : i < n ∧ j = i) :
-  (xs.set! i x)[j] = x := by
-  have : i < xs.toArray.size := by scalar_tac
-  simp only [getElem_eq_toArray_getElem, toArray_set!, Array.set!_eq_setIfInBounds,
-    Array.size_setIfInBounds, size_toArray, Array.Inhabited_getElem_eq_getElem!,
-    ← Array.getElem!_toList, Array.toList_setIfInBounds, hi]
-  grind
+attribute [simp_lists_safe] getElem_set!_self getElem_set!_ne
 
 @[simp, simp_lists_safe]
 theorem getElem!_set!_ne {α : Type u}
@@ -127,15 +114,7 @@ theorem getElem!_set!_ne {α : Type u}
   (h : i ≠ j) :
   (xs.set! i x)[j]! = xs[j]! := by
   simp only [getElem!_eq_toArray_getElem!, toArray_set!]
-  simp_lists
-
-@[simp, simp_lists_safe]
-theorem getElem_set!_ne {α : Type u}
-  [Inhabited α] {n i j : ℕ} {x : α} {xs : Vector α n}
-  (h : i ≠ j ∧ j < n) :
-  (xs.set! i x)[j] = xs[j] := by
-  simp only [getElem_eq_toArray_getElem, toArray_set!]
-  simp_lists
+  exact Array.getElem!_set!_ne (xs := xs.toArray) (x := x) (hij := h)
 
 @[simp, simp_lists_safe]
 theorem getElem!_replicate {α : Type u} [Inhabited α] {i n : ℕ} {a : α} (h : i < n) :

@@ -8,6 +8,9 @@ public import Aeneas.Tactic.Step.SpecInfo
 public import AeneasMeta.OptionConfig
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 namespace Aeneas
 
 namespace Step

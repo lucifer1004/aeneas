@@ -4,6 +4,9 @@ public import Aeneas.Std.Scalar.Core
 public import Aeneas.Data.List.List
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 namespace Aeneas.Std
 
 open Result WP

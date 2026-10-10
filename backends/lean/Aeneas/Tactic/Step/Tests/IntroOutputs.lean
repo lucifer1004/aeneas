@@ -3,6 +3,8 @@ import Aeneas.Do
 import Aeneas.Std.Slice
 import Aeneas.Tactic.Step
 
+set_option backward.isDefEq.respectTransparency false
+
 /-! # `introOutputs` tests -/
 
 open Aeneas Aeneas.Std Result

@@ -3,6 +3,9 @@ public import Aeneas.Std.Scalar.Core
 public import Aeneas.Std.Scalar.Elab
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 namespace Aeneas.Std
 
 open Result Error ScalarElab

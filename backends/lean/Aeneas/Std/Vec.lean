@@ -11,6 +11,9 @@ public import Aeneas.Std.WP
 
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 namespace Aeneas
 
 namespace Std

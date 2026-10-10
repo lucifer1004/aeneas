@@ -4,6 +4,9 @@ public import Aeneas.Data.ListN
 
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 namespace Aeneas.Std
 open Aeneas.Data.ListN
 

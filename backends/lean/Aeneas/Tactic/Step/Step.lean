@@ -12,6 +12,8 @@ public import Aeneas.Std.WP
 public import Aeneas.Do
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace Aeneas
 
 namespace Step
@@ -849,11 +851,10 @@ meta def tryApply (info : SpecInfo) (lifting : Option LiftingInfo) (args : Args)
     | some th => do
       trace[Step] "Lookuped up {kind}: {th}"
       -- Apply the theorem
-      let res ← do
-        try
-          let res ← stepWith info lifting args isLet fExpr th
-          pure (some res)
-        catch _ => pure none
+      try
+        let res ← stepWith info lifting args isLet fExpr th
+        pure (some res)
+      catch _ => pure none
   match res with
   | some res => pure (some res)
   | none => pure none

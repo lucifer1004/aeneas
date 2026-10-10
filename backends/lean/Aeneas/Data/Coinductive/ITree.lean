@@ -8,6 +8,9 @@ public import Aeneas.Data.Coinductive.Effect
 
 @[expose] public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 namespace Aeneas.Data.Coinductive
 
 open Lean.Order

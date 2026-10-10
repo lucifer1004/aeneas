@@ -4,6 +4,8 @@ public meta import Lean
 public meta import Aeneas.Tactic.Step
 import Aeneas.Tactic.Solver.ScalarTac
 
+set_option backward.isDefEq.respectTransparency false
+
 open Aeneas Aeneas.Std Result
 
 namespace Aeneas.Tactic.Step.Tests.IntroOutputsRecursion

@@ -7,6 +7,9 @@ public import Aeneas.Data.Coinductive.ITree
 public import Aeneas.Data.Coinductive.Effect
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 namespace Aeneas
 
 namespace Std

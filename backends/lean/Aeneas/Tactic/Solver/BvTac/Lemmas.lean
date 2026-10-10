@@ -3,6 +3,7 @@ public import Aeneas.Tactic.Solver.BvTac.BvTac
 import all Init.Data.Nat.Bitwise.Basic
 public section
 
+
 /-!
 # Bitwise identity lemmas for scalar types
 
@@ -119,15 +120,20 @@ theorem U128.maxVal_and_val (x : U128) : 340282366920938463463374607431768211455
 -- ============================================================================
 
 @[simp, simp_scalar_safe, bvify, grind =, agrind =]
-theorem U8.bv_mod_size (x : U8) : x.bv % 256#8 = x.bv := by bv_tac 8
+theorem U8.bv_mod_size (x : U8) : x.bv % 256#8 = x.bv := by
+  rw [show (256#8 : BitVec 8) = 0#8 by decide, BitVec.umod_zero]
 @[simp, simp_scalar_safe, bvify, grind =, agrind =]
-theorem U16.bv_mod_size (x : U16) : x.bv % 65536#16 = x.bv := by bv_tac 16
+theorem U16.bv_mod_size (x : U16) : x.bv % 65536#16 = x.bv := by
+  rw [show (65536#16 : BitVec 16) = 0#16 by decide, BitVec.umod_zero]
 @[simp, simp_scalar_safe, bvify, grind =, agrind =]
-theorem U32.bv_mod_size (x : U32) : x.bv % 4294967296#32 = x.bv := by bv_tac 32
+theorem U32.bv_mod_size (x : U32) : x.bv % 4294967296#32 = x.bv := by
+  rw [show (4294967296#32 : BitVec 32) = 0#32 by decide, BitVec.umod_zero]
 @[simp, simp_scalar_safe, bvify, grind =, agrind =]
-theorem U64.bv_mod_size (x : U64) : x.bv % 18446744073709551616#64 = x.bv := by bv_tac 64
+theorem U64.bv_mod_size (x : U64) : x.bv % 18446744073709551616#64 = x.bv := by
+  rw [show (18446744073709551616#64 : BitVec 64) = 0#64 by decide, BitVec.umod_zero]
 @[simp, simp_scalar_safe, bvify, grind =, agrind =]
-theorem U128.bv_mod_size (x : U128) : x.bv % 340282366920938463463374607431768211456#128 = x.bv := by bv_tac 128
+theorem U128.bv_mod_size (x : U128) : x.bv % 340282366920938463463374607431768211456#128 = x.bv := by
+  rw [show (340282366920938463463374607431768211456#128 : BitVec 128) = 0#128 by decide, BitVec.umod_zero]
 
 -- ============================================================================
 -- x.val % (2^n) = x.val  (Nat level)

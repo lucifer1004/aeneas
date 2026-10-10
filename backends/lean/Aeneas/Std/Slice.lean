@@ -9,6 +9,9 @@ public import Aeneas.Tactic.Simp.SimpScalar.SimpScalar
 public import Aeneas.Std.SliceDef
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 namespace Aeneas.Std
 
 open Result Error core.ops.range WP

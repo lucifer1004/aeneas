@@ -2,6 +2,8 @@ module
 public import Lean.Elab.Tactic.Basic
 import Aeneas.Tactic.Step
 
+set_option backward.isDefEq.respectTransparency false
+
 open Aeneas Aeneas.Std Result
 
 namespace Aeneas.Tactic.Step.Tests.SpecParameters

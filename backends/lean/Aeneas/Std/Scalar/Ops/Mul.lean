@@ -7,6 +7,9 @@ public import Mathlib.Data.BitVec
 public import Mathlib.Data.Int.Init
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 namespace Aeneas.Std
 
 open Result Error Arith ScalarElab WP

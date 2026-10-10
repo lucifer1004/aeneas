@@ -3,6 +3,9 @@ public import Aeneas.Std.Scalar.Ops.Rem
 public import Aeneas.Std.Scalar.Elab
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 namespace Aeneas.Std
 
 open Result Error Arith ScalarElab WP

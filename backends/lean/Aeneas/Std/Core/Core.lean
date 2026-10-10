@@ -6,6 +6,9 @@ public import Aeneas.Tactic.Elab.TraitDefault.Init
 public import Aeneas.Std.Alloc
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 namespace Aeneas
 
 namespace Std

@@ -4,6 +4,9 @@ public import Aeneas.Std.Scalar.Elab
 public import Aeneas.Std.Scalar.Notations
 public section
 
+set_option backward.isDefEq.respectTransparency false
+
+
 namespace Aeneas.Std
 
 open ScalarElab
